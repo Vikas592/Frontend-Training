@@ -48,6 +48,7 @@ p > span {
 .checkout__close-btn {
   position: absolute;
   right: 1%;
+  font-size: large;
 }
 
 content {
