@@ -32,10 +32,124 @@
       </header>
       <content>
         <section class="checkout__payment-block">
-          <h5>Payment Block</h5>
+          <section class="wallet">
+            <p>Wallet</p>
+            <hr />
+            <div class="wallet__images">
+              <div>
+                <img src="./images/cards/discover.png" alt="discover" />
+                <p>Ending with 8899</p>
+              </div>
+              <div>
+                <img src="./images/cards/mastercard.png" alt="mastercard" />
+                <p>Ending with 8899</p>
+              </div>
+              <div>
+                <img src="./images/cards/visa.png" alt="visa" />
+                <p>Ending with 8899</p>
+              </div>
+            </div>
+          </section>
+          <section class="new-card">
+            <p>New Card</p>
+            <hr />
+            <div class="new-card-form-container">
+              <form class="new-card-form">
+                <input type="text" placeholder="Name on Card" />
+                <input type="number" placeholder="xxxx-xxxx-xxxx-xxxx" />
+                <div class="new-card__cvv">
+                  <input type="text" placeholder="MM/YY" />
+                  <input type="number" placeholder="CVV" />
+                </div>
+
+                <button type="submit">CONTINUE</button>
+              </form>
+            </div>
+          </section>
         </section>
         <section class="checkout__cart-block">
-          <h5>Cart Block</h5>
+          <section class="products">
+            <div class="products-img-details">
+              <img
+                src="./images/products/mobile-holder.jpg"
+                alt="mobile holder"
+              />
+              <div class="product-details">
+                <div class="product-details__name-price">
+                  <span>Mobile Holder</span>
+                  <span>$ 10.00</span>
+                </div>
+                <div class="product-details__color-quantity">
+                  <p>Black</p>
+                  <p>Quantity: 1</p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="products-img-details">
+              <img src="./images/products/rado.jpg" alt="mobile holder" />
+              <div class="product-details">
+                <div class="product-details__name-price">
+                  <span>Rado Watch</span>
+                  <span>$ 10.00</span>
+                </div>
+                <div class="product-details__color-quantity">
+                  <p>Black</p>
+                  <p>Quantity: 1</p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="products-img-details">
+              <img
+                src="./images/products/usb-c-2-micro.jpeg"
+                alt="mobile holder"
+              />
+              <div class="product-details">
+                <div class="product-details__name-price">
+                  <span>C type to Micro Converter</span>
+                  <span>$ 10.00</span>
+                </div>
+                <div class="product-details__color-quantity">
+                  <p>Black</p>
+                  <p>Quantity: 1</p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="products-img-details">
+              <img src="./images/products/hard-case.jpg" alt="mobile holder" />
+              <div class="product-details">
+                <div class="product-details__name-price">
+                  <span>Mobile Case</span>
+                  <span>$ 10.00</span>
+                </div>
+                <div class="product-details__color-quantity">
+                  <p>Black</p>
+                  <p>Quantity: 1</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="total-block">
+            <div>
+              <span>Sub Total</span>
+              <span>$ 100.00</span>
+            </div>
+            <div>
+              <span>Shipping</span>
+              <span>$ 10.00</span>
+            </div>
+            <div>
+              <span>Taxes</span>
+              <span>$ 5.00</span>
+            </div>
+            <div class="total">
+              <span>Total</span>
+              <span>$ 115.00</span>
+            </div>
+          </section>
         </section>
       </content>
     </div>
