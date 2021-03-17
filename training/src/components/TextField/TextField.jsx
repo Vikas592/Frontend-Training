@@ -40,6 +40,6 @@ export default TextField;
 
 TextField.propTypes = {
   value: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.bool,
   disabled: PropTypes.bool,
 };

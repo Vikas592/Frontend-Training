@@ -1,2 +1,2 @@
-export const getRandomNumber = (max) => Math.random(0, max - 10);
-export const getNextRoundRobin = (total, current) => (current + 1) / total;
+export const getRandomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
+export const getNextRoundRobin = (total, current) => (total === current ? 0 : current + 1);
