@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { valueStyle, errorStyle, defaultStyle } from './style';
 
 function TextField(props) {
@@ -27,3 +28,9 @@ function TextField(props) {
 }
 
 export default TextField;
+
+TextField.propTypes = {
+  value: PropTypes.string,
+  error: PropTypes.string,
+  disabled: PropTypes.bool,
+};
