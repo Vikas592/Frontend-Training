@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { DEFAULT_BANNER_IMAGE, PUBLIC_IMAGE_FOLDER } from '../../configs/constants';
 import sliderStyle from './style';
@@ -15,27 +15,28 @@ function Slider(props) {
   } = props;
 
   const len = banners.length - 1;
-  const getRandomIndex = () => getRandomNumber(len);
+  const [banner, setBanner] = useState(defaultBanner);
   const getBanner = () => {
-    const index = getRandomIndex();
-    const banner = random ? PUBLIC_IMAGE_FOLDER + banners[index]
+    const index = getRandomNumber(len);
+    const bannerURL = random ? PUBLIC_IMAGE_FOLDER + banners[index]
       : PUBLIC_IMAGE_FOLDER + banners[getNextRoundRobin(len, index)];
 
-    return banner;
+    return bannerURL;
   };
 
   useEffect(() => {
-    const intervalId = setInterval(() => { console.log('hello'); }, duration);// eslint-disable-line
-    return () => clearInterval(intervalId);
+    const interval = setInterval(() => {
+      setBanner(getBanner());
+    }, duration);
+    return () => clearInterval(interval);
   }, []);// eslint-disable-line
 
   return (
     <div style={sliderStyle}>
       <img
         alt={altText}
-        src={getBanner() || defaultBanner}
+        src={banner || defaultBanner}
         height={height}
-
       />
     </div>
   );
