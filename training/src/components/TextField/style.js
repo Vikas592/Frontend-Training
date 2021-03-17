@@ -1,8 +1,13 @@
+export const inputDivStyle = {
+  padding: '1%',
+};
+
 export const defaultStyle = {
-  width: '90%',
-  height: '1em',
+  width: '99%',
+  height: '0.6em',
   padding: '1%',
   borderRadius: '5px',
+  margin: '0.5%',
 };
 
 export const errorStyle = {

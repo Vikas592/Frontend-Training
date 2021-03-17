@@ -1,29 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { DEFAULT_BANNER_IMAGE } from '../../configs/constants';
+import sliderStyle from './style';
 
 function Slider(props) {
   const {
     altText,
     banners,
     defaultBanner,
-    duration,
+    // duration,
     height,
     random,
   } = props;
   return (
-    <div>
-      <h1>Slider components</h1>
+    <div style={sliderStyle}>
+      <img alt={altText} src={random ? banners[0] : defaultBanner} height={height} />
     </div>
   );
 }
-
-export default Slider;
 
 Slider.propTypes = {
   altText: PropTypes.string,
   banners: PropTypes.arrayOf(PropTypes.string),
   defaultBanner: PropTypes.string,
-  duration: PropTypes.number,
+  // duration: PropTypes.number,
   height: PropTypes.number,
   random: PropTypes.bool,
 };
@@ -31,8 +31,10 @@ Slider.propTypes = {
 Slider.defaultProps = {
   altText: 'Default Banner',
   banners: [],
-  defaultBanner: 'default.png',
-  duration: 2000,
+  defaultBanner: DEFAULT_BANNER_IMAGE,
+  // duration: 2000,
   height: 200,
   random: false,
 };
+
+export default Slider;
