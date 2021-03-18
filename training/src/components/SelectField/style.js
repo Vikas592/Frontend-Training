@@ -1,7 +1,8 @@
 export const selectStyle = {
-  width: '57rem',
-  height: '3em',
-  padding: '1%',
+  width: '100%',
+  padding: '2%',
   borderRadius: '5px',
   marginTop: '1%',
+  backgroundColor: 'white',
+  border: '2px solid orange',
 };

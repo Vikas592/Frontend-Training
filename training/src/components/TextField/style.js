@@ -1,7 +1,6 @@
 export const defaultStyle = {
-  width: '90%',
-  height: '1em',
-  padding: '1%',
+  width: '95.5%',
+  padding: '2%',
   borderRadius: '5px',
 };
 
