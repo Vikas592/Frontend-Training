@@ -1,16 +1,85 @@
-import React from 'react';
-import { TextField } from '../../components';
+import React, { useState } from 'react';
+import { TextField, RadioGroup, SelectField } from '../../components';
+import { CRICKET, FOOTBALL } from '../../configs/Constants';
 
 function TextFieldDemo() {
+  const [name, setName] = useState('');
+  const [radioValue, setRadioValue] = useState('');
+  const [sport, setSport] = useState('');
+  const selectOptions = [
+    {
+      key: 'Select',
+      value: 'Select',
+    },
+    {
+      key: CRICKET,
+      value: CRICKET,
+    },
+    {
+      key: FOOTBALL,
+      value: FOOTBALL,
+    },
+  ];
+
+  const radioCricketOptions = [
+    {
+      key: 'Wicket Keeper',
+      value: 'Wicket Keeper',
+    },
+    {
+      key: 'Bowler',
+      value: 'Bowler',
+    },
+    {
+      key: 'Batsmen',
+      value: 'Batsmen',
+    },
+  ];
+
+  const radioFootballOptions = [
+    {
+      key: 'Defender',
+      value: 'Defender',
+    },
+    {
+      key: 'Striker',
+      value: 'Striker',
+    },
+  ];
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+    console.log({ name, sport, radioValue }); //eslint-disable-line
+  };
+
+  const handleSportChange = (event) => {
+    setSport(event.target.value === 'Select' ? '' : event.target.value);
+    setRadioValue('');
+    console.log({ name, sport, radioValue }); //eslint-disable-line
+  };
+
+  const handleRadioChange = (event) => {
+    setRadioValue(event.target.value);
+    console.log({ name, sport, radioValue }); //eslint-disable-line
+
+  };
+
   return (
     <div>
-      <h2>This is disabled input</h2>
-      <TextField disabled />
-      <h2>A Valid Input</h2>
-      <TextField value="Accessible" />
-      <h2>An Input with Errors</h2>
-      <TextField error />
-      <p style={{ color: 'red' }}>Cannot be greater than </p>
+      <h4>Name</h4>
+      <TextField value={name} handleNameChange={handleNameChange} />
+      <SelectField
+        value={sport}
+        handleSportChange={handleSportChange}
+        options={selectOptions}
+      />
+      {sport && (
+        <RadioGroup
+          value={sport}
+          handleRadioChange={handleRadioChange}
+          options={sport === CRICKET ? radioCricketOptions : radioFootballOptions}
+        />
+      )}
     </div>
   );
 }
