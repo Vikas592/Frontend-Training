@@ -6,9 +6,12 @@ function TextFieldDemo() {
   return (
     <div>
       <Slider banners={banners} height={300} random={false} duration={2000} />
-      <TextField disabled />
+      <h4> This is Disabled Input</h4>
+      <TextField disabled value="Disabled" />
+      <h4> This is Valid Input</h4>
       <TextField value="Accessible" />
-      <TextField error />
+      <h4> This is Error Input</h4>
+      <TextField error value={101} />
     </div>
   );
 }
