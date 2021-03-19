@@ -5,7 +5,7 @@ import {
   SelectField,
   Button,
 } from '../../components';
-import { CRICKET, FOOTBALL } from '../../configs/Constants';
+import { CRICKET, FOOTBALL } from '../../configs/constants';
 import { buttonContainerStyle, buttonStyle } from './style';
 
 function InputDemo() {
