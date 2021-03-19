@@ -9,10 +9,9 @@ import { CRICKET, FOOTBALL } from '../../configs/constants';
 import { buttonContainerStyle, buttonStyle } from './style';
 
 function InputDemo() {
-  const [name, setName] = useState('');
-  const [radioValue, setRadioValue] = useState('');
-  const [sport, setSport] = useState('');
-  const selectOptions = [
+  const [inputs, setInputs] = useState({ name: '', sport: '', part: '' });
+
+  const sportOptions = [
     {
       key: 'Select',
       value: 'Select',
@@ -27,7 +26,7 @@ function InputDemo() {
     },
   ];
 
-  const radioCricketOptions = [
+  const cricketOptions = [
     {
       key: 'Wicket Keeper',
       value: 'Wicket Keeper',
@@ -42,7 +41,7 @@ function InputDemo() {
     },
   ];
 
-  const radioFootballOptions = [
+  const footballOptions = [
     {
       key: 'Defender',
       value: 'Defender',
@@ -54,48 +53,45 @@ function InputDemo() {
   ];
 
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    setInputs((prev) => ({ ...prev, name: event.target.value }));
   };
 
   const handleSportChange = (event) => {
-    setSport(event.target.value === 'Select' ? '' : event.target.value);
-    setRadioValue('');
+    setInputs((prev) => ({ ...prev, sport: (event.target.value === 'Select' ? '' : event.target.value), part: '' }));
   };
 
   const handleRadioChange = (event) => {
-    setRadioValue(event.target.value);
+    setInputs((prev) => ({ ...prev, part: event.target.value }));
   };
 
   const handleCancelClick = (event) => {
     event.preventDefault();
-    setName('');
-    setRadioValue('');
-    setSport('');
+    setInputs({ name: '', sport: '', part: '' });
   };
 
   const handleSubmitClick = (event) => {
     event.preventDefault();
-    console.log({ name, radioValue, sport }); //eslint-disable-line
+    console.log(inputs); //eslint-disable-line
   };
 
   return (
     <div>
       <h4>Name</h4>
-      <TextField value={name} handleNameChange={handleNameChange} />
+      <TextField value={inputs.name} handleNameChange={handleNameChange} />
       <h4>What do you play ?</h4>
       <SelectField
-        value={sport}
+        value={inputs.sport}
         handleSportChange={handleSportChange}
-        options={selectOptions}
+        options={sportOptions}
       />
 
-      {sport && (
+      {inputs.sport && (
         <>
           <h4>What do you do ?</h4>
           <RadioGroup
-            value={sport}
+            value={inputs.sport}
             handleRadioChange={handleRadioChange}
-            options={sport === CRICKET ? radioCricketOptions : radioFootballOptions}
+            options={inputs.sport === CRICKET ? cricketOptions : footballOptions}
           />
         </>
       )}
