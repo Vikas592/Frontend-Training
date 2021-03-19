@@ -1,85 +1,14 @@
-import React, { useState } from 'react';
-import { TextField, RadioGroup, SelectField } from '../../components';
-import { CRICKET, FOOTBALL } from '../../configs/Constants';
+import React from 'react';
+import { TextField, Slider } from '../../components';
 
 function TextFieldDemo() {
-  const [name, setName] = useState('');
-  const [radioValue, setRadioValue] = useState('');
-  const [sport, setSport] = useState('');
-  const selectOptions = [
-    {
-      key: 'Select',
-      value: 'Select',
-    },
-    {
-      key: CRICKET,
-      value: CRICKET,
-    },
-    {
-      key: FOOTBALL,
-      value: FOOTBALL,
-    },
-  ];
-
-  const radioCricketOptions = [
-    {
-      key: 'Wicket Keeper',
-      value: 'Wicket Keeper',
-    },
-    {
-      key: 'Bowler',
-      value: 'Bowler',
-    },
-    {
-      key: 'Batsmen',
-      value: 'Batsmen',
-    },
-  ];
-
-  const radioFootballOptions = [
-    {
-      key: 'Defender',
-      value: 'Defender',
-    },
-    {
-      key: 'Striker',
-      value: 'Striker',
-    },
-  ];
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-    console.log({ name, sport, radioValue }); //eslint-disable-line
-  };
-
-  const handleSportChange = (event) => {
-    setSport(event.target.value === 'Select' ? '' : event.target.value);
-    setRadioValue('');
-    console.log({ name, sport, radioValue }); //eslint-disable-line
-  };
-
-  const handleRadioChange = (event) => {
-    setRadioValue(event.target.value);
-    console.log({ name, sport, radioValue }); //eslint-disable-line
-
-  };
-
+  const banners = ['cloud.jpg', 'dns-server.png', 'full-stack-web-development.jpg', 'js.jpg', 'load-balancer.png'];
   return (
     <div>
-      <h4>Name</h4>
-      <TextField value={name} handleNameChange={handleNameChange} />
-      <SelectField
-        value={sport}
-        handleSportChange={handleSportChange}
-        options={selectOptions}
-      />
-      {sport && (
-        <RadioGroup
-          value={sport}
-          handleRadioChange={handleRadioChange}
-          options={sport === CRICKET ? radioCricketOptions : radioFootballOptions}
-        />
-      )}
+      <Slider banners={banners} height={300} random={false} duration={2000} />
+      <TextField disabled />
+      <TextField value="Accessible" />
+      <TextField error />
     </div>
   );
 }
