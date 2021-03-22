@@ -5,52 +5,13 @@ import {
   SelectField,
   Button,
 } from '../../components';
-import { CRICKET, FOOTBALL } from '../../configs/constants';
+import { CRICKET } from '../../configs/constants';
+import { cricketOptions, footballOptions, sportOptions } from '../../lib';
 import { buttonContainerStyle, buttonStyle } from './style';
+import schema from '../../Validations';
 
 function InputDemo() {
   const [inputs, setInputs] = useState({ name: '', sport: '', part: '' });
-
-  const sportOptions = [
-    {
-      key: 'Select',
-      value: 'Select',
-    },
-    {
-      key: CRICKET,
-      value: CRICKET,
-    },
-    {
-      key: FOOTBALL,
-      value: FOOTBALL,
-    },
-  ];
-
-  const cricketOptions = [
-    {
-      key: 'Wicket Keeper',
-      value: 'Wicket Keeper',
-    },
-    {
-      key: 'Bowler',
-      value: 'Bowler',
-    },
-    {
-      key: 'Batsmen',
-      value: 'Batsmen',
-    },
-  ];
-
-  const footballOptions = [
-    {
-      key: 'Defender',
-      value: 'Defender',
-    },
-    {
-      key: 'Striker',
-      value: 'Striker',
-    },
-  ];
 
   const handleNameChange = (event) => {
     setInputs((prev) => ({ ...prev, name: event.target.value }));
@@ -69,9 +30,15 @@ function InputDemo() {
     setInputs({ name: '', sport: '', part: '' });
   };
 
-  const handleSubmitClick = (event) => {
+  const hasErrors = async () => {
+    const result = await schema.isValid(inputs);
+    return !result;
+  };
+
+  const handleSubmitClick = async (event) => {
     event.preventDefault();
-    console.log(inputs); //eslint-disable-line
+    const result = await hasErrors();
+    console.log(result ? `error` : inputs); //eslint-disable-line
   };
 
   return (
